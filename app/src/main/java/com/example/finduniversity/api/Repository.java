@@ -4,7 +4,9 @@ package com.example.finduniversity.api;
 
 import android.util.Log;
 
-import com.example.finduniversity.University;
+import androidx.lifecycle.MutableLiveData;
+
+import com.example.finduniversity.data.University;
 
 import java.util.List;
 

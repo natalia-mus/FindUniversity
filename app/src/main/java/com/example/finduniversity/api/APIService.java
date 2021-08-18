@@ -1,6 +1,6 @@
 package com.example.finduniversity.api;
 
-import com.example.finduniversity.University;
+import com.example.finduniversity.data.University;
 
 import java.util.List;
 
