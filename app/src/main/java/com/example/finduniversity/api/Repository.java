@@ -4,8 +4,6 @@ package com.example.finduniversity.api;
 
 import android.util.Log;
 
-import androidx.lifecycle.MutableLiveData;
-
 import com.example.finduniversity.data.University;
 
 import java.util.List;
@@ -37,7 +35,7 @@ public class Repository {
 
     private final APIService apiService = retrofit.create(APIService.class);
 
-    public List<University> getUniversities(String country) {
+    public List<University> getUniversities(String country, RepositoryCallback<List<University>> repositoryCallback) {
 
         Call<List<University>> call = apiService.getUniversities(SEARCH, country);
 
@@ -49,13 +47,13 @@ public class Repository {
                 } else {
                     Log.e("response", response.body().toString());
                     universities = response.body();
+                    repositoryCallback.onSuccess(universities);
                 }
             }
 
             @Override
             public void onFailure(Call<List<University>> call, Throwable t) {
-                Log.e("error", "error");
-                Log.e("t", t.toString());
+                Log.e("error", t.toString());
             }
         });
 

@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.finduniversity.api.Repository;
+import com.example.finduniversity.api.RepositoryCallback;
 import com.example.finduniversity.data.University;
 
 import java.util.List;
@@ -14,11 +15,21 @@ public class MainActivityViewModel extends ViewModel {
 
     private static final Repository repository = Repository.getInstance();
 
-    MutableLiveData<List<University>> universities = new MutableLiveData<>();
+    public MutableLiveData<List<University>> universities = new MutableLiveData<>();
 
     public void getUniversities(String city) {
-        List<University> data = repository.getUniversities(city);
-        universities.setValue(data);
-        Log.e("universities", universities.getValue().toString());
+
+        repository.getUniversities(city, new RepositoryCallback<List<University>>() {
+            @Override
+            public void onSuccess(List<University> data) {
+                universities.setValue(data);
+                Log.e("ViewModel", universities.getValue().toString());
+            }
+
+            @Override
+            public void onError() {
+                Log.e("ViewModel", "error");
+            }
+        });
     }
 }

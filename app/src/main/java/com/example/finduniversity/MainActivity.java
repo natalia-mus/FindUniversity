@@ -1,13 +1,13 @@
 package com.example.finduniversity;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModel;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.os.Bundle;
 import android.util.Log;
 
-import com.example.finduniversity.api.Repository;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+
+import com.example.finduniversity.data.University;
 import com.example.finduniversity.viewmodel.MainActivityViewModel;
 
 import java.util.List;
@@ -21,10 +21,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Repository repo = Repository.getInstance();
-        //repo.getUniversities("Poland");
-
         viewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
+        viewModel.universities.observe(this, universitiesObserver);
         viewModel.getUniversities("Poland");
     }
+
+    Observer<List<University>> universitiesObserver = new Observer<List<University>>() {
+        @Override
+        public void onChanged(List<University> universities) {
+            Log.e("obs", universities.get(1).getName());
+        }
+    };
 }
