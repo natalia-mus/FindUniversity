@@ -44,6 +44,7 @@ public class Repository {
             public void onResponse(Call<List<University>> call, Response<List<University>> response) {
                 if (!response.isSuccessful()) {
                     Log.e("response", "not successful");
+                    repositoryCallback.onError();
                 } else {
                     Log.e("response", response.body().toString());
                     universities = response.body();
@@ -54,6 +55,7 @@ public class Repository {
             @Override
             public void onFailure(Call<List<University>> call, Throwable t) {
                 Log.e("error", t.toString());
+                repositoryCallback.onError();
             }
         });
 

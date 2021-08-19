@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        tools:context=".MainActivity">
+        tools:context=".view.MainActivity">
 
         <TextView
             android:id="@+id/activity_main_hint"
@@ -19,13 +19,13 @@
             android:text="@string/activity_main_hint"
             android:textAlignment="center"
             android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@id/activity_main_city"
+            app:layout_constraintBottom_toTopOf="@id/activity_main_country"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/activity_main_city"
+            android:id="@+id/activity_main_country"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
@@ -33,11 +33,11 @@
             android:hint="@string/country"
             android:padding="16dp"
             android:textSize="24sp"
-            app:layout_constraintBottom_toTopOf="@id/activity_main_find_button"
+            app:layout_constraintBottom_toTopOf="@id/activity_main_find_universities_button"
             app:layout_constraintTop_toBottomOf="@id/activity_main_hint" />
 
         <Button
-            android:id="@+id/activity_main_find_button"
+            android:id="@+id/activity_main_find_universities_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="20dp"
@@ -46,7 +46,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/activity_main_city" />
+            app:layout_constraintTop_toBottomOf="@id/activity_main_country" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
