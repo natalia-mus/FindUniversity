@@ -3,4 +3,5 @@
     <string name="activity_main_hint">Please, enter country name to find universities.</string>
     <string name="find_universities">find universities</string>
     <string name="country">country</string>
+    <string name="links">links:</string>
 </resources>
