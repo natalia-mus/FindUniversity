@@ -2,14 +2,18 @@ package com.example.finduniversity.view;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.finduniversity.R;
 import com.example.finduniversity.data.University;
 
 public class SingleUniversityActivity extends AppCompatActivity {
+
+    TextView name, country;
+    RecyclerView links;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,9 +25,18 @@ public class SingleUniversityActivity extends AppCompatActivity {
 
     private void setView() {
         Intent intent = getIntent();
+
         if (intent.hasExtra("university")) {
             University university = intent.getParcelableExtra("university");
-            Log.e("single university", university.getName());
+
+            name = findViewById(R.id.activity_single_university_name);
+            country = findViewById(R.id.activity_single_university_country);
+
+            String universityName = university.getName();
+            String universityCountry = university.getCountry();
+
+            name.setText(universityName);
+            country.setText(universityCountry);
         }
     }
 }
