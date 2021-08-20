@@ -1,7 +1,7 @@
 package com.example.finduniversity.view;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,7 +14,7 @@ import com.example.finduniversity.R;
 import com.example.finduniversity.data.University;
 import com.example.finduniversity.viewmodel.MainActivityViewModel;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,10 +42,12 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    Observer<List<University>> universitiesObserver = new Observer<List<University>>() {
+    Observer<ArrayList<University>> universitiesObserver = new Observer<ArrayList<University>>() {
         @Override
-        public void onChanged(List<University> universities) {
-            Log.e("obs", universities.get(1).getName());
+        public void onChanged(ArrayList<University> universities) {
+            Intent intent = new Intent(MainActivity.this, UniversitiesListActivity.class);
+            intent.putParcelableArrayListExtra("universities", universities);
+            startActivity(intent);
         }
     };
 }

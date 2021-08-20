@@ -6,7 +6,7 @@ import android.util.Log;
 
 import com.example.finduniversity.data.University;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -20,9 +20,12 @@ public class Repository {
     private static final String BASE_URL = "http://universities.hipolabs.com/";
     private static final String SEARCH = "search";
 
-    List<University> universities;
+    ArrayList<University> universities;
 
-    private Repository() { };
+    private Repository() {
+    }
+
+    ;
 
     public static Repository getInstance() {
         return instance;
@@ -35,13 +38,13 @@ public class Repository {
 
     private final APIService apiService = retrofit.create(APIService.class);
 
-    public List<University> getUniversities(String country, RepositoryCallback<List<University>> repositoryCallback) {
+    public ArrayList<University> getUniversities(String country, RepositoryCallback<ArrayList<University>> repositoryCallback) {
 
-        Call<List<University>> call = apiService.getUniversities(SEARCH, country);
+        Call<ArrayList<University>> call = apiService.getUniversities(SEARCH, country);
 
-        call.enqueue(new Callback<List<University>>() {
+        call.enqueue(new Callback<ArrayList<University>>() {
             @Override
-            public void onResponse(Call<List<University>> call, Response<List<University>> response) {
+            public void onResponse(Call<ArrayList<University>> call, Response<ArrayList<University>> response) {
                 if (!response.isSuccessful()) {
                     Log.e("response", "not successful");
                     repositoryCallback.onError();
@@ -53,7 +56,7 @@ public class Repository {
             }
 
             @Override
-            public void onFailure(Call<List<University>> call, Throwable t) {
+            public void onFailure(Call<ArrayList<University>> call, Throwable t) {
                 Log.e("error", t.toString());
                 repositoryCallback.onError();
             }
