@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.finduniversity.R;
 import com.example.finduniversity.data.University;
+import com.example.finduniversity.view.interfaces.OnUniversityItemClick;
 
 import java.util.ArrayList;
 
@@ -19,10 +20,12 @@ public class UniversitiesListAdapter extends RecyclerView.Adapter<UniversitiesLi
 
     private final Context context;
     private final ArrayList<University> universities;
+    private final OnUniversityItemClick onUniversityItemClick;
 
-    public UniversitiesListAdapter(Context context, ArrayList<University> universities) {
+    public UniversitiesListAdapter(Context context, ArrayList<University> universities, OnUniversityItemClick onItemClick) {
         this.context = context;
         this.universities = universities;
+        this.onUniversityItemClick = onItemClick;
     }
 
     @NonNull
@@ -36,6 +39,13 @@ public class UniversitiesListAdapter extends RecyclerView.Adapter<UniversitiesLi
     public void onBindViewHolder(@NonNull UniversitiesListViewHolder holder, int position) {
         String universityName = universities.get(position).getName();
         holder.name.setText(universityName);
+
+        holder.item.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onUniversityItemClick.onUniversityItemClicked(universities.get(position));
+            }
+        });
     }
 
     @Override
