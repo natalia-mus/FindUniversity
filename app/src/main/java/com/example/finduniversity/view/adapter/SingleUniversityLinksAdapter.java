@@ -7,22 +7,24 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.finduniversity.R;
+import com.example.finduniversity.view.interfaces.OnLinkItemClick;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class SingleUniversityLinksAdapter extends RecyclerView.Adapter<SingleUniversityLinksViewHolder> {
 
     Context context;
-    List<String> links = new ArrayList<String>();
+    List<String> links;
+    OnLinkItemClick onLinkItemClick;
 
-    public SingleUniversityLinksAdapter(Context context, List<String> webPages, List<String> domains) {
+    public SingleUniversityLinksAdapter(Context context, List<String> webPages, OnLinkItemClick onLinkItemClick) {
         this.context = context;
-        links.addAll(webPages);
-        links.addAll(domains);
+        this.links = webPages;
+        this.onLinkItemClick = onLinkItemClick;
     }
 
     @NonNull
@@ -35,6 +37,14 @@ public class SingleUniversityLinksAdapter extends RecyclerView.Adapter<SingleUni
     @Override
     public void onBindViewHolder(@NonNull SingleUniversityLinksViewHolder holder, int position) {
         holder.link.setText(links.get(position));
+
+        holder.linkItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String link = links.get(position);
+                onLinkItemClick.onLinkItemClicked(link);
+            }
+        });
     }
 
     @Override
@@ -45,11 +55,14 @@ public class SingleUniversityLinksAdapter extends RecyclerView.Adapter<SingleUni
 
 
 class SingleUniversityLinksViewHolder extends RecyclerView.ViewHolder {
+
+    ConstraintLayout linkItem;
     TextView link;
 
     public SingleUniversityLinksViewHolder(View view) {
         super(view);
 
+        linkItem = view.findViewById(R.id.link_item);
         link = view.findViewById(R.id.link_item_link);
     }
 }

@@ -1,6 +1,7 @@
 package com.example.finduniversity.view;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -11,10 +12,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.finduniversity.R;
 import com.example.finduniversity.data.University;
 import com.example.finduniversity.view.adapter.SingleUniversityLinksAdapter;
+import com.example.finduniversity.view.interfaces.OnLinkItemClick;
 
 import java.util.List;
 
-public class SingleUniversityActivity extends AppCompatActivity {
+public class SingleUniversityActivity extends AppCompatActivity implements OnLinkItemClick {
 
     TextView name, country;
     RecyclerView links;
@@ -40,13 +42,19 @@ public class SingleUniversityActivity extends AppCompatActivity {
             String universityName = university.getName();
             String universityCountry = university.getCountry();
             List<String> webPages = university.getWebPages();
-            List<String> domains = university.getDomains();
 
             name.setText(universityName);
             country.setText(universityCountry);
 
             links.setLayoutManager(new LinearLayoutManager(this));
-            links.setAdapter(new SingleUniversityLinksAdapter(this, webPages, domains));
+            links.setAdapter(new SingleUniversityLinksAdapter(this, webPages, this));
         }
+    }
+
+    @Override
+    public void onLinkItemClicked(String link) {
+        Uri uri = Uri.parse(link);
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(intent);
     }
 }
