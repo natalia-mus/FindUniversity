@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
         viewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
         viewModel.universities.observe(this, universitiesObserver);
+        viewModel.error.observe(this, errorObserver);
 
         countryEditText = findViewById(R.id.activity_main_country);
         findUniversitiesButton = findViewById(R.id.activity_main_find_universities_button);
@@ -48,6 +50,15 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, UniversitiesListActivity.class);
             intent.putParcelableArrayListExtra("universities", universities);
             startActivity(intent);
+        }
+    };
+
+    Observer<Boolean> errorObserver = new Observer<Boolean>() {
+        @Override
+        public void onChanged(Boolean error) {
+            if (error) {
+                Toast.makeText(MainActivity.this, getString(R.string.error), Toast.LENGTH_LONG).show();
+            }
         }
     };
 }

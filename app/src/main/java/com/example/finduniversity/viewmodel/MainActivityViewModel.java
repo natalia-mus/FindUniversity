@@ -16,20 +16,27 @@ public class MainActivityViewModel extends ViewModel {
     private static final Repository repository = Repository.getInstance();
 
     public MutableLiveData<ArrayList<University>> universities = new MutableLiveData<>();
+    public MutableLiveData<Boolean> error = new MutableLiveData<>(false);
 
-    public void getUniversities(String city) {
+    public void getUniversities(String country) {
 
-        repository.getUniversities(city, new RepositoryCallback<ArrayList<University>>() {
-            @Override
-            public void onSuccess(ArrayList<University> data) {
-                universities.setValue(data);
-                Log.e("ViewModel", universities.getValue().toString());
-            }
+        if (country.equals("")) {
+            error.setValue(true);
+        } else {
+            error.setValue(false);
+            repository.getUniversities(country, new RepositoryCallback<ArrayList<University>>() {
+                @Override
+                public void onSuccess(ArrayList<University> data) {
+                    universities.setValue(data);
+                    Log.e("ViewModel", universities.getValue().toString());
+                }
 
-            @Override
-            public void onError() {
-                Log.e("ViewModel", "error");
-            }
-        });
+                @Override
+                public void onError() {
+                    Log.e("ViewModel", "error");
+                    error.setValue(true);
+                }
+            });
+        }
     }
 }

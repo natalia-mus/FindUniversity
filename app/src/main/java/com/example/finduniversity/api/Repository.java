@@ -46,12 +46,14 @@ public class Repository {
             @Override
             public void onResponse(Call<ArrayList<University>> call, Response<ArrayList<University>> response) {
                 if (!response.isSuccessful()) {
-                    Log.e("response", "not successful");
                     repositoryCallback.onError();
                 } else {
-                    Log.e("response", response.body().toString());
-                    universities = response.body();
-                    repositoryCallback.onSuccess(universities);
+                    if (response.body().isEmpty()) {
+                        repositoryCallback.onError();
+                    } else {
+                        universities = response.body();
+                        repositoryCallback.onSuccess(universities);
+                    }
                 }
             }
 
