@@ -28,6 +28,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        setView();
+    }
+
+    private void setView() {
         viewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
         viewModel.universities.observe(this, universitiesObserver);
         viewModel.error.observe(this, errorObserver);
