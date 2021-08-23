@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FindUniversity</string>
+    <string name="app_name">Find University</string>
     <string name="activity_main_hint">Please, enter country name to find universities.</string>
     <string name="find_universities">find universities</string>
     <string name="country">country</string>
