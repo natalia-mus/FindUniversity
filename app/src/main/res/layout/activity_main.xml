@@ -3,18 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_background">
+    android:background="@drawable/gradient_background"
+    android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
         tools:context=".view.MainActivity">
 
         <ImageView
             android:id="@+id/activity_main_image"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:layout_marginTop="40dp"
             android:layout_marginBottom="20dp"
             android:src="@drawable/ic_twotone_school_24"
             app:layout_constraintBottom_toTopOf="@+id/activity_main_hint"
@@ -55,6 +56,7 @@
             android:id="@+id/activity_main_find_universities_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
             android:background="@drawable/button_background"
             android:padding="20dp"
             android:text="@string/find_universities"
