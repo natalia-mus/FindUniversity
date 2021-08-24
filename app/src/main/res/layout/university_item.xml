@@ -6,13 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="12dp"
-    android:background="@color/teal_700"
+    android:background="@drawable/university_item_background"
     android:padding="12dp">
 
     <TextView
         android:id="@+id/university_item_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/gray_light"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"

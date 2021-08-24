@@ -22,12 +22,17 @@ public class MainActivity extends AppCompatActivity {
     private MainActivityViewModel viewModel;
     private EditText countryEditText;
     private Button findUniversitiesButton;
+    private Boolean findUniversitiesButtonClicked = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        setView();
+    }
+
+    private void setView() {
         viewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
         viewModel.universities.observe(this, universitiesObserver);
         viewModel.error.observe(this, errorObserver);
@@ -38,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         findUniversitiesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                findUniversitiesButtonClicked = true;
                 String country = countryEditText.getText().toString();
                 viewModel.getUniversities(country);
             }
@@ -47,9 +53,14 @@ public class MainActivity extends AppCompatActivity {
     Observer<ArrayList<University>> universitiesObserver = new Observer<ArrayList<University>>() {
         @Override
         public void onChanged(ArrayList<University> universities) {
-            Intent intent = new Intent(MainActivity.this, UniversitiesListActivity.class);
-            intent.putParcelableArrayListExtra("universities", universities);
-            startActivity(intent);
+
+            if (findUniversitiesButtonClicked.equals(true)) {
+                findUniversitiesButtonClicked = false;
+                Intent intent = new Intent(MainActivity.this, UniversitiesListActivity.class);
+                intent.putParcelableArrayListExtra("universities", universities);
+                startActivity(intent);
+            }
+
         }
     };
 
