@@ -1,4 +1,4 @@
-# FindUniversity
+# Find University
 
 Find University is a simple app that helps to find universities all around the world. User is asked to enter country name and then the list of the universities of this country is displayed. User can tap on selected school in order to see more details like university name, country and list of links. After taping on the link, application opens it in the browser.
 
