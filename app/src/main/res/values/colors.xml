@@ -10,5 +10,5 @@
     <color name="blue_light">#449DE4</color>
     <color name="blue_dark_button_pressed">#006BBF</color>
     <color name="yellow">#FFE70E</color>
-    <color name="black_transparent">#32000000</color>
+    <color name="black_transparent">#74000000</color>
 </resources>
