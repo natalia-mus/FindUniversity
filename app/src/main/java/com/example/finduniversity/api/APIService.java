@@ -11,6 +11,8 @@ import retrofit2.http.Query;
 
 public interface APIService {
 
+    // http://universities.hipolabs.com/search?country=Poland
+
     @GET("{search}")
     Call<ArrayList<University>> getUniversities(@Path("search") String search, @Query("country") String country);
 }
