@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/GITHUB/FindUniversity/app/src/main/res/drawable/university_item_background.xml" value="0.2875" />
+        <entry key="..\:/GITHUB/FindUniversity/app/src/main/res/layout-land/activity_main.xml" value="0.22178130511463845" />
+        <entry key="..\:/GITHUB/FindUniversity/app/src/main/res/layout-land/activity_single_university.xml" value="0.22178130511463845" />
+        <entry key="..\:/GITHUB/FindUniversity/app/src/main/res/layout-land/activity_universities_list.xml" value="0.22178130511463845" />
+        <entry key="..\:/GITHUB/FindUniversity/app/src/main/res/layout/activity_main.xml" value="1.0" />
+        <entry key="..\:/GITHUB/FindUniversity/app/src/main/res/layout/activity_single_university.xml" value="0.2713541666666667" />
+        <entry key="..\:/GITHUB/FindUniversity/app/src/main/res/layout/activity_universities_list.xml" value="0.2713541666666667" />
+        <entry key="..\:/GITHUB/FindUniversity/app/src/main/res/layout/link_item.xml" value="0.2713541666666667" />
+        <entry key="..\:/GITHUB/FindUniversity/app/src/main/res/layout/university_item.xml" value="0.2713541666666667" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>

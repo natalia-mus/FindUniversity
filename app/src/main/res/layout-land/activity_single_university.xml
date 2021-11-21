@@ -3,15 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:backgroundTint="@color/black_transparent"
-    android:backgroundTintMode="src_over"
     android:layout_height="match_parent"
-    android:background="@drawable/university_3_vertical">
+    android:background="@drawable/university_3_horizontal"
+    android:backgroundTint="@color/black_transparent"
+    android:backgroundTintMode="src_over">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="20dp">
+        android:paddingHorizontal="20dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="50dp">
 
         <TextView
             android:id="@+id/activity_single_university_name"
