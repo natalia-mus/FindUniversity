@@ -9,3 +9,9 @@ Project was built according to the MVVM architecture pattern and it uses ViewMod
 API source: [universities.hipolabs.com](http://universities.hipolabs.com/)
 
 All the graphics comes from [pixabay.com](https://pixabay.com)
+
+<br/><br/>
+
+## Author
+
+[Natalia Muskała](https://github.com/natalia-mus)
